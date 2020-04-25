@@ -29,7 +29,13 @@
             </yummy:PancakeView>
 
             <yummy:PancakeView Grid.Row="2" BackgroundColor="#44FFFFFF" CornerRadius="5" Padding="2">
-                <Label Text="{Binding PictureDescription}" HorizontalTextAlignment="Center" />
+                <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TranslateDescription_Tapped" />
+                </yummy:PancakeView.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="10,0">
+                    <Label FontSize="20" VerticalOptions="Center" TextColor="Gray" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
+                    <Label x:Name="PictureDescriptionLabel" Text="{Binding PictureDescription}" HorizontalTextAlignment="Center" />
+                </StackLayout>
             </yummy:PancakeView>
 
             <Button Grid.Row="3" Text="Add Picture" FontAttributes="Bold" BackgroundColor="{Binding PictureAccentColor}" TextColor="White" Command="{Binding AddPictureCommand}" />

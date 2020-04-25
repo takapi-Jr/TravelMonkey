@@ -21,5 +21,16 @@ namespace TravelMonkey.Views
         {
             Navigation.PopModalAsync();
         }
+
+        private async void TranslateDescription_Tapped(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PictureDescriptionLabel.Text))
+            {
+                await DisplayAlert("No description text", "You didn't take or choose a photo!", "OK");
+                return;
+            }
+
+            await Navigation.PushModalAsync(new TranslationResultPage(PictureDescriptionLabel.Text));
+        }
     }
 }
